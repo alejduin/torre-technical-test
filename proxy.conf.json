@@ -1,6 +1,21 @@
 {
   "/api/bios/*": {
-    "target": "https://torre.bio/",
+    "target": "https://bio.torre.co/",
+    "secure": false,
+    "changeOrigin": "true"
+  },
+  "/api/opportunities/*": {
+    "target": "https://torre.co/",
+    "secure": false,
+    "changeOrigin": "true"
+  },
+  "/people/_search/*": {
+    "target": "https://search.torre.co/",
+    "secure": false,
+    "changeOrigin": "true"
+  },
+  "/opportunities/_search/*": {
+    "target": "https://search.torre.co/",
     "secure": false,
     "changeOrigin": "true"
   }
