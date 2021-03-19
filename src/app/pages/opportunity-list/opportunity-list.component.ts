@@ -19,7 +19,7 @@ export class OpportunityListComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.xgetOportunities(2, 10, '');
+    this.xgetOportunities(0, 10, '');
   }
 
   public xgetOportunities(offset: number, size: number, aggregate: string) {

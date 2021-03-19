@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PeopleService {
-  private peopleURL = '/api/bios/';
-  private searchProfileURL = '/people/_search/';
+  private peopleURL = environment.peopleURL;
+  private searchProfileURL = environment.searchProfileURL;
 
   constructor(private http: HttpClient) { }
 
