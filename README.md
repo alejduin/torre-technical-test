@@ -33,11 +33,13 @@ This time I've been working on an angular based web app with data from torre.co 
   <thead align="center">
     <tr border: none;>
       <td><b>📚 Tasks</b></td>
-      <td><b>⭐ Stars</b></td>
+      <td><b>⭐ Status</b></td>
+      <td><b>⌚ Time</b></td>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td></td>
       <td></td>
       <td></td>
     </tr>
