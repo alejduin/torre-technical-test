@@ -1,6 +1,6 @@
 {
   "/api/bios/*": {
-    "target": "https://bio.torre.co/",
+    "target": "https://torre.bio/",
     "secure": false,
     "changeOrigin": "true"
   }
