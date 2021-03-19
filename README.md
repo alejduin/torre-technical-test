@@ -12,7 +12,7 @@ Hi, I'm [Jhony Alejandro Hernandez Duin](https://www.linkedin.com/in/jhony-aleja
 
 This time I've been working on an angular based web app with data from torre.co APIs.
 
-<h3>Things I've coded with for this project</h3>
+<h3>What I've been using for this project</h3>
 <p>
   <img alt="Webpack" src="https://img.shields.io/badge/-Webpack-8DD6F9?style=flat-square&logo=webpack&logoColor=white" /> 
   <img alt="TypeScript" src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" />
