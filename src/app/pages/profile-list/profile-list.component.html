@@ -10,46 +10,38 @@
                   <tr>
                     <th scope="col" style="width: 70px;">#</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Tags</th>
-                    <th scope="col">Projects</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Skills</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let test of test">
-                      <td>
-                        <div>
-                          <img class="rounded-circle avatar-xs" src="{{ test.picture }}" alt="">
-                        </div>
-                      </td>
-                      <td>
-                        <h5 class="font-size-14 mb-1"><a href="javascript: void(0);" class="text-dark">{{ test.name }}</a></h5>
-                        <p class="text-muted mb-0">Frontend Developer</p>
-                      </td>
-                      <td>frank@skote.com</td>
-                      <td>
-                        <div>
-                          <a href="javascript: void(0);" class="badge badge-soft-primary font-size-11 m-1">Html</a>
-                          <a href="javascript: void(0);" class="badge badge-soft-primary font-size-11 m-1">Css</a>
-                          <a href="javascript: void(0);" class="badge badge-soft-primary font-size-11 m-1">2 + more</a>
-                        </div>
-                      </td>
-                      <td>
-                        132
-                      </td>
-                      <td>
-                        <ul class="list-inline font-size-20 contact-links mb-0">
-                          <li class="list-inline-item px-2">
-                            <a href="" ngbTooltip="Message"><i class="bx bx-message-square-dots"></i></a>
-                          </li>
-                          <li class="list-inline-item px-2">
-                            <a href="" ngbTooltip="Profile"><i class="bx bx-user-circle"></i></a>
-                          </li>
-                        </ul>
-                      </td>
+                    <tr *ngFor="let profileTemp of profileTemp">
+                        <td>
+                          <div>
+                            <img class="rounded-circle avatar-xs" src="{{ profileTemp.picture }}" alt="">
+                          </div>
+                        </td>
+                        <td>
+                          <h5 class="font-size-14 mb-1"><a href="javascript: void(0);" class="text-dark">{{ profileTemp.name }}</a></h5>
+                          <p class="text-muted mb-0">{{ profileTemp.professionalHeadline}}</p>
+                        </td>
+                        <td>{{ profileTemp.location }}</td>
+                        <td>
+                          <div>
+                            <a href="javascript: void(0);" class="badge badge-soft-primary font-size-11 m-1">{{ profileTemp.skills[0].name}}</a>
+                            <a href="javascript: void(0);" class="badge badge-soft-primary font-size-11 m-1">{{ profileTemp.skills[1].name}}</a>
+                            <a href="javascript: void(0);" class="badge badge-soft-primary font-size-11 m-1">2 + more</a>
+                          </div>
+                        </td>
+                        <td>
+                          <ul class="list-inline font-size-20 contact-links mb-0">
+                            <li class="list-inline-item px-2">
+                              <a [routerLink]="['/profile', profileTemp.username]" ngbTooltip="Profile"><i class="bx bx-user-circle"></i></a>
+                            </li>
+                          </ul>
+                        </td>
                     </tr>
-                  
                 </tbody>
               </table>
             </div>

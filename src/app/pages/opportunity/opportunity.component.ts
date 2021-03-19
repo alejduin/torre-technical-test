@@ -1,48 +1,62 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from 'src/app/core/models/opportunity.models';
-
-import { opportunityData } from '../opportunity/projetctData';
-import { OpportunityService } from '../../core/services/opportunity.service';
+import { PeopleService } from '../../core/services/people.service';
+import { ProfileDetail } from '../../core/models/profile.models';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-opportunity',
   templateUrl: './opportunity.component.html',
-  styleUrls: ['./opportunity.component.scss']
+  styleUrls: ['./opportunity.component.scss'],
 })
+
+/**
+ * Contacts-opportunity component
+ */
 export class OpportunityComponent implements OnInit {
+  // bread crumb items
+  breadCrumbItems: Array<{}>;
+  public persona: ProfileDetail;
+  public error = '';
+  public username: string;
 
-  public opportunityData;
-  public test: any;
+  constructor(
+    public people: PeopleService,
+    public router: Router,
+    public route: ActivatedRoute
+    ) { }
 
-  constructor(public opportunity: OpportunityService) { }
+  ngOnInit() {
+    this.username = this.route.snapshot.queryParamMap.get('user');
+    console.log('username: ', this.username);
+    // this.route.queryParams.subscribe(params => {
+    //   this.username = params.get('user');
+    //   console.log('username: ', this.username);
+    //   this.showPeopleDetail(this.username);
+    // });
 
-  ngOnInit(): void {
-    this.opportunityData = opportunityData;
-    this.xgetOportunities(2, 10, '');
+    this.breadCrumbItems = [{ label: 'Contacts' }, { label: 'Profile', active: true }];
+
   }
 
-  public xgetOportunities(offset: number, size: number, aggregate: string) {
-    this.opportunity.searchOportunities(offset, size, aggregate).subscribe( res => {
-      this.test = res.results.map(results => ({ 
-        id: results.id,
-        organizations: [{
-          id: results.organizations.id,
-          name: results.organizations.name,
-          picture: results.organizations.picture
-        }],
-        locations: [],
-        members: [{
-            subjectId: results.members.subjectId,
-            name: results.members.name,
-            username: results.members.username,
-            professionalHeadline: results.members.professionalHeadline,
-            picture: results.members.picture
-        }]
-      }));
-      console.log('test: ', this.test);
-
+  public showPeopleDetail(alias: string){
+    this.people.getPeopleDetail(alias).subscribe(res => {
+      this.persona = {
+        person: {
+          professionalHeadline: res.person.professionalHeadline,
+          picture: res.person.picture,
+          name: res.person.name,
+          location: {
+            country: res.person.location.country
+          },
+          summaryOfBio: res.person.summaryOfBio
+        },
+        interests: res.interests,
+        jobs: res.jobs,
+        education: res.education,
+        languages: res.languages
+      }
+      console.log('persona: ', this.persona);
     });
-
   }
 
 }

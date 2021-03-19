@@ -1,91 +1,134 @@
 <div class="container-fluid">
-  
-    <div class="row">
-      <div *ngFor="let grid of opportunityData" class="col-xl-4 col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <div class="media">
-              <div class="avatar-md me-4">
-                <span class="avatar-title rounded-circle bg-light text-danger font-size-16">
-                  <img src="{{grid.image}}" alt height="30" />
-                </span>
+
+  <div class="row">
+    <div class="col-xl-4">
+      <div class="card overflow-hidden">
+        <div class="bg-soft bg-primary">
+          <div class="row">
+            <div class="col-7">
+              <div class="text-primary p-3">
+                <h5 class="text-primary">Professional Profile</h5>
               </div>
-  
-              <div class="media-body overflow-hidden">
-                <h5 class="text-truncate font-size-15">
-                  <a href="javascript: void(0);" class="text-dark">{{grid.text}}</a>
-                </h5>
-                <p class="text-muted mb-4">{{grid.subtext}}</p>
-                <div class="avatar-group">
-                  <div class="avatar-group-item">
-                    <a href="javascript: void(0);" class="d-inline-block">
-                      <img src="{{grid.users[0]}}" class="rounded-circle avatar-xs" alt />
-                    </a>
+            </div>
+            <div class="col-5 align-self-end">
+              <img src="assets/images/profile-img.png" alt="" class="img-fluid">
+            </div>
+          </div>
+        </div>
+        <div class="card-body pt-0">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="avatar-md profile-user-wid mb-4">
+                <img src="{{ persona.person.picture }}" alt="" class="img-thumbnail rounded-circle">
+              </div>
+              <h5 class="font-size-15 text-truncate">{{ persona.person.name }}</h5>
+              <p class="text-muted mb-0 text-truncate">{{ persona.person.professionalHeadline }}</p>
+            </div>
+
+            <div class="col-sm-8">
+              <div class="pt-4">
+
+                <div class="row">
+                  <div class="col-6">
+                    <h5 class="font-size-15">Languages</h5>
+                    <span class="text-muted mb-0" *ngFor="let lang of persona.languages">{{ lang.language }}, </span>
                   </div>
-                  <div class="avatar-group-item" *ngIf="grid.users[1]">
-                    <a href="javascript: void(0);"  class="d-inline-block">
-                      <img src="{{grid.users[1]}}" class="rounded-circle avatar-xs" alt />
-                    </a>
-                  </div>
-                  <div class="avatar-group-item" *ngIf="grid.users[2]">
-                    <a href="javascript: void(0);" class="d-inline-block">
-                      <img src="{{grid.users[2]}}" class="rounded-circle avatar-xs" alt />
-                    </a>
-                  </div>
+                </div>
+                <div class="mt-4">
                 </div>
               </div>
             </div>
           </div>
-          <div class="px-4 py-3 border-top">
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item me-3">
-                <span class="badge" [ngClass]="{ 'bg-success': grid.status === 'Completed',
-                      'bg-warning': grid.status === 'Pending',
-                      'bg-danger': grid.status === 'Delay' }">{{grid.status}}</span>
-              </li>
-              <li class="list-inline-item me-3" title="Due Date" ngbTooltip="Due Date">
-                <i class="bx bx-calendar me-1"></i>
-                {{grid.date}}
-              </li>
-              <li class="list-inline-item me-3" title="Comments" ngbTooltip="Comments">
-                <i class="bx bx-comment-dots me-1"></i>
-                {{grid.comment}}
+        </div>
+      </div>
+      <!-- end card -->
+
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title mb-4">Personal Information</h4>
+
+          <p class="text-muted mb-4">{{ persona.person.summaryOfBio }}</p>
+          <div class="table-responsive">
+            <table class="table table-nowrap mb-0">
+              <tbody>
+                <tr>
+                  <th scope="row">Full Name :</th>
+                  <td>{{ persona.person.name }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Interests :</th>
+                  <td>
+                    <span *ngFor="let interests of persona.interests">{{ interests.name }}, </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Location :</th>
+                  <td>{{ persona.person.location.country }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- end card -->
+
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title mb-5">Experience</h4>
+          <div class="">
+            <ul class="verti-timeline list-unstyled">
+              <li class="event-list" *ngFor="let experience of persona.jobs">
+                <div class="event-timeline-dot">
+                  <i class="bx bx-right-arrow-circle"></i>
+                </div>
+                <div class="media">
+                  <div class="me-3">
+                  </div>
+                  <div class="media-body">
+                    <div>
+                      <h5 class="font-size-15">{{ experience.name }}</h5>
+                      <h6 class="font-size-12">{{ experience.organizations[0].name }}</h6>
+                      <span class="text-primary">{{experience.fromYear}} - {{experience.toYear}}</span>
+                    </div>
+                  </div>
+                </div>
               </li>
             </ul>
+          </div>
+
+        </div>
+      </div>
+      <!-- end card -->
+    </div>
+
+    <div class="col-xl-8">
+
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title mb-4">Education</h4>
+          <div class="table-responsive">
+            <table class="table table-nowrap table-hover mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">Course</th>
+                  <th scope="col">Institute</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">End Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let educ of persona.education">
+                  <td>{{ educ.name }}</td>
+                  <td>{{ educ.organizations.length === 0 ? '' : educ.organizations[0].name }}</td>
+                  <td>{{ educ.fromYear }}</td>
+                  <td>{{ educ.toYear }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <ul class="pagination pagination-rounded justify-content-center mt-2 mb-5">
-          <li class="page-item disabled">
-            <a href="javascript: void(0);" class="page-link">
-              <i class="mdi mdi-chevron-left"></i>
-            </a>
-          </li>
-          <li class="page-item">
-            <a href="javascript: void(0);" class="page-link">1</a>
-          </li>
-          <li class="page-item active">
-            <a href="javascript: void(0);" class="page-link">2</a>
-          </li>
-          <li class="page-item">
-            <a href="javascript: void(0);" class="page-link">3</a>
-          </li>
-          <li class="page-item">
-            <a href="javascript: void(0);" class="page-link">4</a>
-          </li>
-          <li class="page-item">
-            <a href="javascript: void(0);" class="page-link">5</a>
-          </li>
-          <li class="page-item">
-            <a href="javascript: void(0);" class="page-link">
-              <i class="mdi mdi-chevron-right"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- end row -->
   </div>
+  <!-- end row -->
+</div>

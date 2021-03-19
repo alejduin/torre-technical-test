@@ -1,17 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OpportunityComponent } from './opportunity.component';
 
-describe('OpportunityComponent', () => {
+describe('ProfileComponent', () => {
   let component: OpportunityComponent;
   let fixture: ComponentFixture<OpportunityComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
       declarations: [ OpportunityComponent ]
     })
     .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(OpportunityComponent);

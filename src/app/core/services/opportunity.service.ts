@@ -15,5 +15,4 @@ export class OpportunityService {
     const searchUrl = `${this.searchOpportunitiesURL}`;
     return this.http.post(searchUrl, data);
   }
-  
 }
