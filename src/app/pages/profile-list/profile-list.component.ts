@@ -20,7 +20,7 @@ export class ProfileListComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.xgetProfiles(2, 10, '');
+    this.xgetProfiles(0, 10, '');
   }
 
   public xgetProfiles(offset: number, size: number, aggregate: string) {

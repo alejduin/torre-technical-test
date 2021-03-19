@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OpportunityService {
-  private searchOpportunitiesURL = '/opportunities/_search/';
-  private opportunityURL = '/api/opportunities/';
+  private searchOpportunitiesURL = environment.searchOpportunitiesURL;
+  private opportunityURL = environment.opportunityURL;
 
   constructor(private http: HttpClient) { }
 
