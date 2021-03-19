@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment.prod';
   providedIn: 'root'
 })
 export class PeopleService {
-  private peopleURL = environment.peopleURL;
+  private peopleURL = '/api/bios/';
   private searchProfileURL = environment.searchProfileURL;
 
   constructor(private http: HttpClient) { }
