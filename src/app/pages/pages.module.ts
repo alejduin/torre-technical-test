@@ -20,6 +20,8 @@ import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin
 import bootstrapPlugin from "@fullcalendar/bootstrap";
 import { HomeComponent } from './home/home.component';
+import { ProfileListComponent } from './profile-list/profile-list.component';
+import { OpportunityComponent } from './opportunity/opportunity.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -33,7 +35,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, ProfileListComponent, OpportunityComponent],
   imports: [
     CommonModule,
     FormsModule,
