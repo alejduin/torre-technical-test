@@ -28,7 +28,6 @@ This time I've been working on an angular based web app with data from torre.co 
   <img alt="Nodejs" src="https://img.shields.io/badge/-Nodejs-43853d?style=flat-square&logo=Node.js&logoColor=white" />
 </p>
 
-<h3>Open source projects</h3>
 <table>
   <thead align="center">
     <tr border: none;>
