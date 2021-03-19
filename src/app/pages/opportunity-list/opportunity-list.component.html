@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  
+    <div class="row">
+      <div *ngFor="let grid of test" class="col-xl-4 col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="media">
+              <div class="avatar-md me-4">
+                <span (click)="goToOpportunity(grid.id)" class="avatar-title rounded-circle bg-light text-danger font-size-16 setPointer">
+                  <img src="{{grid.organizations[0].picture}}" alt height="30" />
+                </span>
+              </div>
+  
+              <div class="media-body overflow-hidden">
+                <h5 class="text-truncate font-size-15">
+                  <a  (click)="goToOpportunity(grid.id)" class="text-dark setPointer">{{grid.organizations[0].name}}</a>
+                </h5>
+                <p class="text-muted mb-4">{{grid.objective}}</p>
+                <div class="avatar-group">
+                  <div class="avatar-group-item" *ngFor="let members of grid.members">
+                    <a (click)="goToMember(members.username)" class="d-inline-block setPointer" ngbTooltip="{{members.username}}">
+                      <img src="{{members.picture}}" class="rounded-circle avatar-xs" alt />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="px-4 py-3 border-top">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item me-3">
+                <span class="badge" [ngClass]="{ 'bg-success': grid.status === 'Completed',
+                      'bg-warning': grid.status === 'Pending',
+                      'bg-danger': grid.status === 'Delay' }">{{grid.status}}</span>
+              </li>
+              <li class="list-inline-item me-3 setPointer" title="ver mas" ngbTooltip="ver mas">
+                <a (click)="goToOpportunity(grid.id)">
+                  <i class="bx bx-plus me-1"></i>
+                  ver mas
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

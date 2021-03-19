@@ -16,24 +16,19 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderService } from '../core/services/loader.service';
 import { LoaderInterceptorService } from '../core/services/interceptors/loader-interceptor.service';
-import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
-import interactionPlugin from '@fullcalendar/interaction'; // a plugin
-import bootstrapPlugin from "@fullcalendar/bootstrap";
 import { HomeComponent } from './home/home.component';
+import { ProfileListComponent } from './profile-list/profile-list.component';
+import { OpportunityListComponent } from './opportunity-list/opportunity-list.component';
+import { ProfileComponent } from './profile/profile.component';
+import { OpportunityComponent } from './opportunity/opportunity.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
   wheelSpeed: 0.3
 };
 
-FullCalendarModule.registerPlugins([ // register FullCalendar plugins
-  dayGridPlugin,
-  interactionPlugin,
-  bootstrapPlugin
-]);
-
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, ProfileListComponent, OpportunityListComponent, ProfileComponent, OpportunityComponent],
   imports: [
     CommonModule,
     FormsModule,

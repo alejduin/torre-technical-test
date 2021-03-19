@@ -1,0 +1,91 @@
+<div class="container-fluid" *ngIf="opport">
+
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card overflow-hidden">
+        <div class="bg-soft bg-primary">
+          <div class="row">
+            <div class="col-7">
+              <div class="text-primary p-3">
+                <h5 class="text-primary">Opportunity Profile</h5>
+              </div>
+            </div>
+            <div class="col-5 align-self-end">
+              <img src="assets/images/profile-img.png" alt="" class="img-fluid">
+            </div>
+          </div>
+        </div>
+        <div class="card-body pt-0">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="avatar-md profile-user-wid mb-4">
+                <img src="{{ opport.organization[0].picture }}" alt="" class="img-thumbnail rounded-circle">
+              </div>
+              <h5 class="font-size-18 text-truncate">{{ opport.organization[0].name }}</h5>
+              <p class="text-muted mb-0 text-truncate">{{ opport.objective }}</p>
+            </div>
+
+            <div class="col-xl-12">
+              <div class="pt-4">
+                <h5 class="card-title mb-4">Information</h5>
+                <div class="row">
+                  <div class="col-12">
+                    <ol>
+                      <li *ngFor="let detail of opport.details">
+                        {{ detail.content }}
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+                <div class="mt-4">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end card -->
+
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title mb-4">Information</h4>
+
+          <p class="text-muted mb-4"></p>
+          <div class="table-responsive">
+            <table class="table table-nowrap mb-0">
+              <tbody>
+                <tr>
+                  <th scope="row">Strengths:</th>
+                  <td>
+                    <div *ngFor="let strength of opport.strengths">
+                      <span>{{strength.name}}</span> / <span>{{strength.experience}}</span>
+                    </div>
+                  </td>
+                  
+                </tr>
+                <tr>
+                  <th scope="row">Salary:</th>
+                  <td>
+                    <span>
+                      {{ opport.serpTags.baseSalary.currency }} 
+                      {{ opport.serpTags.baseSalary.value.minValue }} - {{ opport.serpTags.baseSalary.value.maxValue }} 
+                      {{ opport.serpTags.baseSalary.value.unitText }}
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Location :</th>
+                  <td>{{ opport.serpTags.hasOwnProperty('jobLocation') ? opport.serpTags.jobLocation[0].address.addressCountry : 'No Defined' }}</td>
+                </tr>
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- end card -->
+
+    </div>
+  </div>
+  <!-- end row -->
+</div>

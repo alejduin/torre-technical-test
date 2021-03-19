@@ -14,22 +14,16 @@
 
     <div class="d-flex">
 
-      <div class="dropdown d-inline-block" ngbDropdown>
-        <button type="button" class="btn header-item" id="page-header-user-dropdown" ngbDropdownToggle>
-          <img *ngIf="flagvalue !== undefined" src="{{flagvalue}}" alt="Header Language" height="16"> <span
-            class="ms-1">{{countryName}}</span>
-          <img *ngIf="flagvalue === undefined" src="{{valueset}}" alt="Header Language" height="16">
-          <span *ngIf="flagvalue === undefined" class="ms-1">English</span>
+      <div class="dropdown d-inline-block">
+        <button type="button" class="btn header-item setPointer" (click)="goTo('/profile-list')">
+          <span class="ms-1">People</span>
         </button>
-        <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
-          <!-- item-->
-          <a href="javascript:void(0);" class="dropdown-item notify-item" *ngFor="let item of listLang"
-            (click)="setLanguage(item.text, item.lang, item.flag)" [ngClass]="{'active': cookieValue === item.lang}">
-            <img src="{{item.flag}}" alt="user-image" class="ms-1" height="12"> <span
-              class="align-middle">{{item.text}}</span>
-          </a>
-          <!-- item-->
-        </div>
+      </div>
+
+      <div class="dropdown d-inline-block">
+        <button type="button" class="btn header-item setPointer" (click)="goTo('/opportunity-list')">
+          <span class="ms-1">Opportunities</span>
+        </button>
       </div>
 
       <div class="dropdown d-none d-lg-inline-block me-1">
@@ -46,9 +40,6 @@
         </button>
         <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
           <!-- item-->
-          <a class="dropdown-item" href="javascript: void(0);"><i class="bx bx-user font-size-16 align-middle me-1"></i>
-            {{ 'HEADER.LOGIN.PROFILE' | translate}}</a>
-          <div class="dropdown-divider"></div>
           <a class="dropdown-item text-danger" href="javascript: void(0);" (click)="logout()"><i
               class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
             {{ 'HEADER.LOGIN.LOGOUT' | translate}}</a>
