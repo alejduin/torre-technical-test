@@ -39,9 +39,19 @@ This time I've been working on an angular based web app with data from torre.co 
   </thead>
   <tbody>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>Analysis of the email containing the project in question.</td>
+      <td>Done</td>
+      <td>30min</td>
+    </tr>
+    <tr>
+      <td>Endpoint response validation.</td>
+      <td>Done</td>
+      <td>30min</td>
+    </tr>
+    <tr>
+      <td>Compilation of test data for information architecture design and analysis.</td>
+      <td>Done</td>
+      <td>2h</td>
     </tr>
   </tbody>
 </table>
