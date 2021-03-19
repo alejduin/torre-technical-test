@@ -19,58 +19,33 @@
                     <tr *ngFor="let profileTemp of profileTemp">
                         <td>
                           <div>
-                            <img class="rounded-circle avatar-xs" src="{{ profileTemp.picture }}" alt="">
+                            <img class="rounded-circle avatar-xs setPointer" src="{{ profileTemp.picture }}" alt="" (click)="redirect(profileTemp.username)">
                           </div>
                         </td>
                         <td>
-                          <h5 class="font-size-14 mb-1"><a href="javascript: void(0);" class="text-dark">{{ profileTemp.name }}</a></h5>
+                          <h5 class="font-size-14 mb-1">
+                            <a (click)="redirect(profileTemp.username)" class="text-dark setPointer">{{ profileTemp.name }}</a>
+                          </h5>
                           <p class="text-muted mb-0">{{ profileTemp.professionalHeadline}}</p>
                         </td>
                         <td>{{ profileTemp.location }}</td>
                         <td>
                           <div>
-                            <a href="javascript: void(0);" class="badge badge-soft-primary font-size-11 m-1">{{ profileTemp.skills[0].name}}</a>
-                            <a href="javascript: void(0);" class="badge badge-soft-primary font-size-11 m-1">{{ profileTemp.skills[1].name}}</a>
-                            <a href="javascript: void(0);" class="badge badge-soft-primary font-size-11 m-1">2 + more</a>
+                            <a class="badge badge-soft-primary font-size-11 m-1 setPointer">{{ profileTemp.skills[0].name}}</a>
+                            <a class="badge badge-soft-primary font-size-11 m-1 setPointer">{{ profileTemp.skills[1].name}}</a>
+                            <a class="badge badge-soft-primary font-size-11 m-1 setPointer">2 + more</a>
                           </div>
                         </td>
                         <td>
                           <ul class="list-inline font-size-20 contact-links mb-0">
-                            <li class="list-inline-item px-2">
-                              <a [routerLink]="['/profile', profileTemp.username]" ngbTooltip="Profile"><i class="bx bx-user-circle"></i></a>
+                            <li class="list-inline-item px-2 setPointer">
+                              <a (click)="redirect(profileTemp.username)" ngbTooltip="Profile"><i class="bx bx-user-circle"></i></a>
                             </li>
                           </ul>
                         </td>
                     </tr>
                 </tbody>
               </table>
-            </div>
-            <div class="row">
-              <div class="col-lg-12">
-                <ul class="pagination pagination-rounded justify-content-center mt-4">
-                  <li class="page-item disabled">
-                    <a href="javascript: void(0);" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
-                  </li>
-                  <li class="page-item">
-                    <a href="javascript: void(0);" class="page-link">1</a>
-                  </li>
-                  <li class="page-item active">
-                    <a href="javascript: void(0);" class="page-link">2</a>
-                  </li>
-                  <li class="page-item">
-                    <a href="javascript: void(0);" class="page-link">3</a>
-                  </li>
-                  <li class="page-item">
-                    <a href="javascript: void(0);" class="page-link">4</a>
-                  </li>
-                  <li class="page-item">
-                    <a href="javascript: void(0);" class="page-link">5</a>
-                  </li>
-                  <li class="page-item">
-                    <a href="javascript: void(0);" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
-                  </li>
-                </ul>
-              </div>
             </div>
           </div>
         </div>

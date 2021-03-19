@@ -27,12 +27,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelSpeed: 0.3
 };
 
-// FullCalendarModule.registerPlugins([ // register FullCalendar plugins
-//   dayGridPlugin,
-//   interactionPlugin,
-//   bootstrapPlugin
-// ]);
-
 @NgModule({
   declarations: [HomeComponent, ProfileListComponent, OpportunityListComponent, ProfileComponent, OpportunityComponent],
   imports: [

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PeopleService } from '../../core/services/people.service';
 import { ProfileList } from '../../core/models/profile.models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-list',
@@ -13,16 +14,13 @@ export class ProfileListComponent implements OnInit {
   public peopleTemp: any;
   public directionData = [];
 
-  constructor(public people: PeopleService) { }
+  constructor(
+    public people: PeopleService,
+    public router: Router
+    ) { }
 
   ngOnInit(): void {
     this.xgetProfiles(2, 10, '');
-  }
-
-  getProfiles(offset: number, size: number, aggregate: string) {
-    this.people.searchProfiles(offset, size, aggregate).subscribe( res => {
-      console.log('res: ', res);
-    })
   }
 
   public xgetProfiles(offset: number, size: number, aggregate: string) {
@@ -35,8 +33,11 @@ export class ProfileListComponent implements OnInit {
         location: results.locationName,
         skills: results.skills
       }));
-      console.log('profileTemp: ', this.profileTemp);
     });
+  }
+
+  public redirect(a: string){
+    this.router.navigate(['/profile', a]);
   }
 
 }

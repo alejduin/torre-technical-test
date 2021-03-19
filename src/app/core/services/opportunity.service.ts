@@ -7,8 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class OpportunityService {
   private searchOpportunitiesURL = '/opportunities/_search/';
+  private opportunityURL = '/api/opportunities/';
 
   constructor(private http: HttpClient) { }
+
+  getOpportunityDetail(term: string): Observable<any> {
+    term = term.trim();
+    const personUrl = `${this.opportunityURL}${term}`;
+    return this.http.get(personUrl);
+  }
 
   searchOportunities(offset: number, size: number, aggregate: string): Observable<any> {
     var data = {offset: offset, size: size, aggregate: aggregate};

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PeopleService } from '../../core/services/people.service';
 import { ProfileDetail } from '../../core/models/profile.models';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -9,11 +9,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./profile.component.scss'],
 })
 
-/**
- * Contacts-profile component
- */
 export class ProfileComponent implements OnInit {
-  // bread crumb items
   breadCrumbItems: Array<{}>;
   public persona: ProfileDetail;
   public error = '';
@@ -23,23 +19,18 @@ export class ProfileComponent implements OnInit {
     public people: PeopleService,
     public router: Router,
     public route: ActivatedRoute
-    ) { }
-
+    ) {
+      this.route.params.subscribe(params => {
+        this.username = params.user;
+      });
+    }
+    
   ngOnInit() {
-    this.username = this.route.snapshot.queryParamMap.get('user');
-    console.log('username: ', this.username);
-    // this.route.queryParams.subscribe(params => {
-    //   this.username = params.get('user');
-    //   console.log('username: ', this.username);
-    //   this.showPeopleDetail(this.username);
-    // });
-
-    this.breadCrumbItems = [{ label: 'Contacts' }, { label: 'Profile', active: true }];
-
+    this.showPeopleDetail(this.username);
   }
 
-  public showPeopleDetail(alias: string){
-    this.people.getPeopleDetail(alias).subscribe(res => {
+  public showPeopleDetail(a: string){
+    this.people.getPeopleDetail(a).subscribe(res => {
       this.persona = {
         person: {
           professionalHeadline: res.person.professionalHeadline,
@@ -53,9 +44,9 @@ export class ProfileComponent implements OnInit {
         interests: res.interests,
         jobs: res.jobs,
         education: res.education,
-        languages: res.languages
+        languages: res.languages,
+        experiences: res.experiences
       }
-      console.log('persona: ', this.persona);
     });
   }
 

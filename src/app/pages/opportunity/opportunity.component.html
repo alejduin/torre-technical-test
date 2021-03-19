@@ -1,7 +1,7 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="opport">
 
   <div class="row">
-    <div class="col-xl-4">
+    <div class="col-xl-12">
       <div class="card overflow-hidden">
         <div class="bg-soft bg-primary">
           <div class="row">
@@ -19,19 +19,22 @@
           <div class="row">
             <div class="col-sm-4">
               <div class="avatar-md profile-user-wid mb-4">
-                <img src="{{ persona.person.picture }}" alt="" class="img-thumbnail rounded-circle">
+                <img src="{{ opport.organization[0].picture }}" alt="" class="img-thumbnail rounded-circle">
               </div>
-              <h5 class="font-size-15 text-truncate">{{ persona.person.name }}</h5>
-              <p class="text-muted mb-0 text-truncate">{{ persona.person.professionalHeadline }}</p>
+              <h5 class="font-size-18 text-truncate">{{ opport.organization[0].name }}</h5>
+              <p class="text-muted mb-0 text-truncate">{{ opport.objective }}</p>
             </div>
 
-            <div class="col-sm-8">
+            <div class="col-xl-12">
               <div class="pt-4">
-
+                <h5 class="card-title mb-4">Personal Information</h5>
                 <div class="row">
-                  <div class="col-6">
-                    <h5 class="font-size-15">Languages</h5>
-                    <span class="text-muted mb-0" *ngFor="let lang of persona.languages">{{ lang.language }}, </span>
+                  <div class="col-12">
+                    <ol>
+                      <li *ngFor="let detail of opport.details">
+                        {{ detail.content }}
+                      </li>
+                    </ol>
                   </div>
                 </div>
                 <div class="mt-4">
@@ -45,89 +48,43 @@
 
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title mb-4">Personal Information</h4>
+          <h4 class="card-title mb-4">Information</h4>
 
-          <p class="text-muted mb-4">{{ persona.person.summaryOfBio }}</p>
+          <p class="text-muted mb-4"></p>
           <div class="table-responsive">
             <table class="table table-nowrap mb-0">
               <tbody>
                 <tr>
-                  <th scope="row">Full Name :</th>
-                  <td>{{ persona.person.name }}</td>
+                  <th scope="row">Strengths:</th>
+                  <td>
+                    <div *ngFor="let strength of opport.strengths">
+                      <span>{{strength.name}}</span> / <span>{{strength.experience}}</span>
+                    </div>
+                  </td>
+                  
                 </tr>
                 <tr>
-                  <th scope="row">Interests :</th>
+                  <th scope="row">Salary:</th>
                   <td>
-                    <span *ngFor="let interests of persona.interests">{{ interests.name }}, </span>
+                    <span>
+                      {{ opport.serpTags.baseSalary.currency }} 
+                      {{ opport.serpTags.baseSalary.value.minValue }} - {{ opport.serpTags.baseSalary.value.maxValue }} 
+                      {{ opport.serpTags.baseSalary.value.unitText }}
+                    </span>
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">Location :</th>
-                  <td>{{ persona.person.location.country }}</td>
+                  <td>{{ opport.serpTags.hasOwnProperty('jobLocation') ? opport.serpTags.jobLocation[0].address.addressCountry : 'No Defined' }}</td>
                 </tr>
               </tbody>
+
             </table>
           </div>
         </div>
       </div>
       <!-- end card -->
 
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title mb-5">Experience</h4>
-          <div class="">
-            <ul class="verti-timeline list-unstyled">
-              <li class="event-list" *ngFor="let experience of persona.jobs">
-                <div class="event-timeline-dot">
-                  <i class="bx bx-right-arrow-circle"></i>
-                </div>
-                <div class="media">
-                  <div class="me-3">
-                  </div>
-                  <div class="media-body">
-                    <div>
-                      <h5 class="font-size-15">{{ experience.name }}</h5>
-                      <h6 class="font-size-12">{{ experience.organizations[0].name }}</h6>
-                      <span class="text-primary">{{experience.fromYear}} - {{experience.toYear}}</span>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-      <!-- end card -->
-    </div>
-
-    <div class="col-xl-8">
-
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title mb-4">Education</h4>
-          <div class="table-responsive">
-            <table class="table table-nowrap table-hover mb-0">
-              <thead>
-                <tr>
-                  <th scope="col">Course</th>
-                  <th scope="col">Institute</th>
-                  <th scope="col">Start Date</th>
-                  <th scope="col">End Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let educ of persona.education">
-                  <td>{{ educ.name }}</td>
-                  <td>{{ educ.organizations.length === 0 ? '' : educ.organizations[0].name }}</td>
-                  <td>{{ educ.fromYear }}</td>
-                  <td>{{ educ.toYear }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
   <!-- end row -->

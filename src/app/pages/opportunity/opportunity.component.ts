@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PeopleService } from '../../core/services/people.service';
-import { ProfileDetail } from '../../core/models/profile.models';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { OpportunityService } from '../../core/services/opportunity.service';
+import { ProjectDetails } from '../../core/models/opportunity.models';
 
 @Component({
   selector: 'app-opportunity',
@@ -9,53 +9,38 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./opportunity.component.scss'],
 })
 
-/**
- * Contacts-opportunity component
- */
 export class OpportunityComponent implements OnInit {
-  // bread crumb items
-  breadCrumbItems: Array<{}>;
-  public persona: ProfileDetail;
+  public opport: ProjectDetails;
   public error = '';
-  public username: string;
+  public jobId: string;
 
   constructor(
-    public people: PeopleService,
+    public opportunity: OpportunityService,
     public router: Router,
     public route: ActivatedRoute
-    ) { }
+    ) {
+      this.route.params.subscribe(params => {
+        this.jobId = params.job;
+      });
+    }
 
   ngOnInit() {
-    this.username = this.route.snapshot.queryParamMap.get('user');
-    console.log('username: ', this.username);
-    // this.route.queryParams.subscribe(params => {
-    //   this.username = params.get('user');
-    //   console.log('username: ', this.username);
-    //   this.showPeopleDetail(this.username);
-    // });
-
-    this.breadCrumbItems = [{ label: 'Contacts' }, { label: 'Profile', active: true }];
-
+    this.showOpportunityDetail(this.jobId);
   }
 
-  public showPeopleDetail(alias: string){
-    this.people.getPeopleDetail(alias).subscribe(res => {
-      this.persona = {
-        person: {
-          professionalHeadline: res.person.professionalHeadline,
-          picture: res.person.picture,
-          name: res.person.name,
-          location: {
-            country: res.person.location.country
-          },
-          summaryOfBio: res.person.summaryOfBio
-        },
-        interests: res.interests,
-        jobs: res.jobs,
-        education: res.education,
-        languages: res.languages
+
+
+  public showOpportunityDetail(a: string){
+    this.opportunity.getOpportunityDetail(a).subscribe(res => {
+      this.opport = {
+        id: res.id,
+        organization: res.organizations,
+        objective: res.objective,
+        attachments: res.attachments,
+        serpTags: res.serpTags,
+        details: res.details,
+        strengths: res.strengths
       }
-      console.log('persona: ', this.persona);
     });
   }
 

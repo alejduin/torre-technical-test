@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="persona">
 
   <div class="row">
     <div class="col-xl-4">
@@ -43,6 +43,68 @@
       </div>
       <!-- end card -->
 
+    </div>
+
+    <div class="col-xl-8">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title mb-4">Education</h4>
+          <div class="table-responsive">
+            <table class="table table-nowrap table-hover mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">Course</th>
+                  <th scope="col">Institute</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">End Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let educ of persona.education">
+                  <td>{{ educ.name }}</td>
+                  <td>{{ educ.organizations.length === 0 ? '' : educ.organizations[0].name }}</td>
+                  <td>{{ educ.fromYear }}</td>
+                  <td>{{ educ.toYear }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title mb-5">Experience</h4>
+          <div class="">
+            <ul class="verti-timeline list-unstyled">
+              <li class="event-list" *ngFor="let experience of persona.jobs">
+                <div class="event-timeline-dot">
+                  <i class="bx bx-right-arrow-circle"></i>
+                </div>
+                <div class="media">
+                  <div class="me-3">
+                  </div>
+                  <div class="media-body">
+                    <div>
+                      <h5 class="font-size-15">{{ experience.name }}</h5>
+                      <h6 class="font-size-12">{{ experience.organizations[0]?.name }}</h6>
+                      <span class="text-primary">{{experience?.fromYear}} - {{experience?.toYear}}</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+  
+        </div>
+      </div>
+      <!-- end card -->
+    </div>
+    <div class="col-xl-8">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title mb-4">Personal Information</h4>
@@ -71,64 +133,9 @@
         </div>
       </div>
       <!-- end card -->
-
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title mb-5">Experience</h4>
-          <div class="">
-            <ul class="verti-timeline list-unstyled">
-              <li class="event-list" *ngFor="let experience of persona.jobs">
-                <div class="event-timeline-dot">
-                  <i class="bx bx-right-arrow-circle"></i>
-                </div>
-                <div class="media">
-                  <div class="me-3">
-                  </div>
-                  <div class="media-body">
-                    <div>
-                      <h5 class="font-size-15">{{ experience.name }}</h5>
-                      <h6 class="font-size-12">{{ experience.organizations[0].name }}</h6>
-                      <span class="text-primary">{{experience.fromYear}} - {{experience.toYear}}</span>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-      <!-- end card -->
     </div>
 
-    <div class="col-xl-8">
-
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title mb-4">Education</h4>
-          <div class="table-responsive">
-            <table class="table table-nowrap table-hover mb-0">
-              <thead>
-                <tr>
-                  <th scope="col">Course</th>
-                  <th scope="col">Institute</th>
-                  <th scope="col">Start Date</th>
-                  <th scope="col">End Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let educ of persona.education">
-                  <td>{{ educ.name }}</td>
-                  <td>{{ educ.organizations.length === 0 ? '' : educ.organizations[0].name }}</td>
-                  <td>{{ educ.fromYear }}</td>
-                  <td>{{ educ.toYear }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
   <!-- end row -->
+
 </div>

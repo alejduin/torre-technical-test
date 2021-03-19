@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from 'src/app/core/models/opportunity.models';
 
-import { opportunityData } from './projetctData';
 import { OpportunityService } from '../../core/services/opportunity.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-opportunity',
@@ -14,10 +13,12 @@ export class OpportunityListComponent implements OnInit {
   public opportunityData;
   public test: any;
 
-  constructor(public opportunity: OpportunityService) { }
+  constructor(
+    public opportunity: OpportunityService,
+    public router: Router,
+    ) { }
 
   ngOnInit(): void {
-    this.opportunityData = opportunityData;
     this.xgetOportunities(2, 10, '');
   }
 
@@ -30,10 +31,16 @@ export class OpportunityListComponent implements OnInit {
         locations: results.locations,
         members: results.members
       }));
-      console.log('test: ', this.test);
-
     });
 
+  }
+
+  public goToOpportunity(opportunityId: string){
+    this.router.navigate(['/opportunity', opportunityId]);
+  }
+
+  public goToMember(username: string) {
+    this.router.navigate(['/profile', username]);
   }
 
 }

@@ -316,4 +316,12 @@ export class HorizontaltopbarComponent implements OnInit, AfterViewInit {
     return item.subItems !== undefined ? item.subItems.length > 0 : false;
   }
 
+  public goTo(page: string){
+    this.router.navigate([page]);
+  }
+
+  public goToMyProfile(a: string){
+    this.router.navigate(['/profile', a]);
+  }
+
 }

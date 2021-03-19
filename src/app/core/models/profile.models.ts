@@ -44,6 +44,11 @@ export class ProfileDetail {
     languages: [{
         language: string
     }]
+    experiences: [{
+        name: string,
+        fromYear: string,
+        toYear: string
+    }]
 }
 
 

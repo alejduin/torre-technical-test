@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'profile-list', component: ProfileListComponent },
   { path: 'opportunity-list', component: OpportunityListComponent },
   { path: 'profile/:user', component: ProfileComponent, pathMatch:'full' },
-  { path: 'opportunity/:user', component: OpportunityComponent, pathMatch:'full' },
+  { path: 'opportunity/:job', component: OpportunityComponent, pathMatch:'full' },
 ];
 
 @NgModule({
