@@ -11,7 +11,7 @@ export const environment = {
     appId: '',
     measurementId: ''
   },
-  peopleURL: 'https://torre.bio/api/bios/',
+  peopleURL: 'https://bio.torre.co/api/bios/',
   searchProfileURL: 'https://search.torre.co/people/_search/',
   searchOpportunitiesURL: 'https://search.torre.co/opportunities/_search/',
   opportunityURL: 'https://torre.co/api/opportunities/'
