@@ -10,7 +10,7 @@
 
 Hi, I'm [Jhony Alejandro Hernandez Duin](https://www.linkedin.com/in/jhony-alejandro-hernandez-duin/), a passionate self-taught Full Stack software developer and a freelance software engineer from Venezuela. My passion for software lies with dreaming up ideas and making them come true with elegant interfaces. I take great care in the experience, architecture, and code quality of the things I build.
 
-This time I've been working on an angular based web app with data from torre.co APIs
+This time I've been working on an angular based web app with data from torre.co APIs.
 
 <h3>Things I've coded with for this project</h3>
 <p>
@@ -39,9 +39,19 @@ This time I've been working on an angular based web app with data from torre.co 
   </thead>
   <tbody>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>Analysis of the email containing the project in question.</td>
+      <td>Done</td>
+      <td>30min</td>
+    </tr>
+    <tr>
+      <td>Endpoint response validation.</td>
+      <td>Done</td>
+      <td>30min</td>
+    </tr>
+    <tr>
+      <td>Compilation of test data for information architecture design and analysis.</td>
+      <td>Done</td>
+      <td>2h</td>
     </tr>
   </tbody>
 </table>
